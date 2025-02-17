@@ -22,3 +22,13 @@ astro-dev-toolbar {
   .font-nunito {
     font-family: 'Nunito';
 }
+
+
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
+  }
+
+body{
+    background-color: #FAEADD;
+}
