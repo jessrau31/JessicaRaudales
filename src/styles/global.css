@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+
+astro-dev-toolbar {
+    display: none !important;
+  }
+
+/* Colores personalizados */
+:root {
+    --primary-color: #522A6F; /* Morado oscuro */
+    --secondary-color: #7E4C96; /* Morado más claro */
+    --accent-color: #F29CB7; /* Rosa suave */
+    --highlight-color: #FBCF4F; /* Amarillo dorado */
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
+
+  .font-dosis {
+    font-family: 'Dosis';
+  }
+
+  .font-nunito {
+    font-family: 'Nunito';
+}
