@@ -1,61 +1,49 @@
+---
+// Importa la data dinámica
+import { aboutMeSections } from '../content/data';
+---
+
 <section id="about" class="py-12 md:py-20 bg-[#FAEADD] text-[#522A6F]">
-    <div class="max-w-6xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-[minmax(300px,400px)_1fr] gap-6 md:gap-8 items-stretch h-full">
-        <!-- Columna Foto -->
-        <div class="md:border-r-2 border-[#F29CB7] md:pr-8 group relative h-full mb-8 md:mb-0">
-            <div class="bg-[#FBCF4F] rounded-2xl h-full shadow-lg p-4 flex items-center justify-center 
-                    transition-all duration-500 hover:shadow-xl hover:scale-[1.02] overflow-hidden
-                    max-w-[400px] mx-auto md:max-w-none">
-                <img 
-                    src="/yop.png" 
-                    alt="Jessica Raudales"
-                    class="h-full w-auto max-h-[400px] md:max-h-none object-contain transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                />
-                <div class="absolute inset-0 border-4 border-[#F29CB7] rounded-2xl opacity-0 
-                        group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-            </div>
-        </div>
-
-        <!-- Columna Texto -->
-        <div class="space-y-4 md:space-y-6 flex flex-col justify-center h-full"> 
-            <h2 class="text-4xl md:text-5xl font-dosis font-bold mb-3 md:mb-4 text-center md:text-left"> 
-                ¡Hola! Soy Jessica Raudales👋🏽
-            </h2>
-            
-            <div class="space-y-4 md:space-y-6 text-base md:text-lg leading-relaxed md:leading-relaxed flex-1"> 
-                <div class="group transition-all duration-300 hover:bg-[#F29CB7]/10 p-3 md:p-4 rounded-xl">
-                    <p class="font-dosis text-[#222023]">
-                        <span class="font-nunito font-semibold block mb-2 text-[#522A6F] text-lg md:text-xl">
-                            🚀 Entusiasta del Frontend y las Bases de Datos
-                        </span>
-                        Especialista en transformar ideas en soluciones digitales funcionales. 
-                        En mis proyectos académicos he creado interfaces centradas en la usabilidad 
-                        y sistemas de datos optimizados para eficiencia.
-                    </p>
-                </div>
-
-                <div class="group transition-all duration-300 hover:bg-[#FBCF4F]/10 p-3 md:p-4 rounded-xl"> 
-                    <p class="font-dosis text-[#222023]">
-                        <span class="font-nunito font-semibold block mb-2 text-[#522A6F] text-lg md:text-xl"> 
-                            💡 Mi filosofía de código
-                        </span>
-                        Cada línea es un puzzle por resolver - busco soluciones técnicas con enfoque creativo. 
-                        Mi motivación: ver cómo cada ajuste acerca el proyecto a su versión ideal.
-                    </p>
-                </div>
-
-                <div class="group transition-all duration-300 hover:bg-[#DDAAFF]/10 p-3 md:p-4 rounded-xl"> 
-                    <p class="font-dosis text-[#222023]">
-                        <span class="font-nunito font-semibold block mb-2 text-[#522A6F] text-lg md:text-xl"> 
-                            🧩 Fuera del código
-                        </span>
-                        Armando rompecabezas de miles de piezas
-                        <span class="block font-dosis italic mt-1 text-[#522A6F]/80 text-sm md:text-base"> 
-                            (Donde practico paciencia y visión global - habilidades que aplico en cada proyecto)
-                        </span>
-                    </p>
-                </div>
-            </div>
-        </div>
+  <div class="max-w-6xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-[minmax(300px,400px)_1fr] gap-6 md:gap-8 items-stretch h-full">
+    <!-- Columna Foto -->
+    <div class="md:border-r-2 border-[#F29CB7] md:pr-8 group relative h-full mb-8 md:mb-0">
+      <div class="bg-[#FBCF4F] rounded-2xl h-full shadow-lg p-4 flex items-center justify-center 
+                  transition-all duration-500 hover:shadow-xl hover:scale-[1.02] overflow-hidden
+                  max-w-[400px] mx-auto md:max-w-none">
+        <img 
+          src="/yop.png" 
+          alt="Jessica Raudales"
+          class="h-full w-auto max-h-[400px] md:max-h-none object-contain transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 border-4 border-[#F29CB7] rounded-2xl opacity-0 
+                    group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+      </div>
     </div>
+
+    <!-- Columna Texto -->
+    <div class="space-y-4 md:space-y-6 flex flex-col justify-center h-full"> 
+      <h2 class="text-4xl md:text-5xl font-dosis font-bold mb-3 md:mb-4 text-center md:text-left"> 
+        ¡Hola! Soy Jessica Raudales👋🏽
+      </h2>
+      
+      <div class="space-y-4 md:space-y-6 text-base md:text-lg leading-relaxed md:leading-relaxed flex-1"> 
+        {aboutMeSections.map(section => (
+          <div class={`group transition-all duration-300 ${section.bgColorHover} ${section.padding} ${section.rounded}`}>
+            <p class="font-dosis text-[#222023]">
+              <span class="font-nunito font-semibold block mb-2 text-[#522A6F] text-lg md:text-xl">
+                {section.title}
+              </span>
+              {section.description}
+              {section.additional && (
+                <span class="block font-dosis italic mt-1 text-[#522A6F]/80 text-sm md:text-base">
+                  {section.additional}
+                </span>
+              )}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
 </section>
