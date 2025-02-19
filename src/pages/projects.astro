@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCards from '../components/ProjectCards.astro';
+import Layout from '../layouts/Layout.astro';
+import { projectsData } from '../content/data.ts';
+
+const projects = await getCollection('projects');
+---
+<Layout hideAboutMe={true} hideTec={true}>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <h1 class="text-5xl font-bold text-[#522A6F] text-center font-dosis mb-14 drop-shadow-md">
+      {projectsData.projectsTitle || 'Mis Proyectos🌟'}
+    </h1>
+    
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      {projects.map((project) => (
+        <ProjectCards project={project} />
+      ))}
+    </div>
+
+    <div class="relative bg-gradient-to-r from-[#FBCF4F] to-[#DDAAFF] opacity-60 p-8 rounded-xl border-[#F29CB7]/30 backdrop-blur-sm">
+      <div class="absolute inset-0 bg-gradient-to-br from-[#FBCF4F]/10 to-[#DDAAFF]/5 rounded-xl"></div>
+      <p class="text-lg text-[#222023]/90 font-nunito leading-relaxed text-center relative z-10">
+        {projectsData.projectsFooter}
+      </p>
+    </div>
+  </div>
+</Layout>

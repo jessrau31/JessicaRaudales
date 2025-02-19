@@ -252,4 +252,8 @@ export const footerData = {
     copyright:
       "© 2025 Jessica Raudales. Hecho con <i class='fa-solid fa-heart text-[#522A6F]'></i> en Honduras",
   };
-  
+
+  export const projectsData = {
+    projectsTitle: "Mis Proyectos 🌟",
+    projectsFooter: "Cada proyecto aquí representa un problema que quise resolver, no solo una tarea que completar. ¡Estoy abierta a oportunidades donde pueda seguir aprendiendo y aportando con código que importe!💫"
+  };

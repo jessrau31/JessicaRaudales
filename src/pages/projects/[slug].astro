@@ -1,0 +1,97 @@
+---
+import { getEntry, getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+
+const projectEntry = await getEntry('projects', slug);
+
+if (!projectEntry) {
+  throw new Error('Proyecto no encontrado');
+}
+
+const { title, category, description, contributions, technologies, github } = projectEntry.data;
+
+const { Content } = await projectEntry.render();
+---
+
+<Layout hideAboutMe={true} hideTec={true}>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+    <header class="text-center mb-16 animate-fade-in-up">
+      <div class="mb-6">
+        <h1 class="text-5xl md:text-6xl font-bold bg-[#522A6F] bg-clip-text text-transparent font-dosis mb-8">
+          {title}
+        </h1>
+        <span class="bg-gradient-to-r from-[#FBCF4F] to-[#DDAAFF] text-[#FAEADD] px-4 py-2 rounded-full text-sm font-dosis font-semibold">
+          {category}
+        </span>
+      </div>
+      <p class="text-xl text-[#522A6F] font-nunito max-w-3xl mx-auto leading-relaxed">
+        {description}
+      </p>
+    </header>
+
+    <div class="space-y-12">
+      
+      <section class="group relative p-8 bg-[#DDAAFF] hover:bg-[#DDAAFF]/40 backdrop-blur-sm rounded-2xl shadow-lg border border-[#F29CB7]/40 hover:border-[#F29CB7]/90 transition-all">
+        <div class="bg-[#F29CB7] absolute -top-5 left-6 p-3 rounded-xl shadow-md">
+          <svg class="w-6 h-6 text-[#522A6F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h2 class="text-3xl font-bold text-[#F29CB7] mb-6 font-dosis">Contribuciones Clave</h2>
+        <div class="prose prose-lg text-[#222023] font-nunito">
+          {contributions}
+        </div>
+      </section>
+
+      <section class="relative p-8 bg-[#222023] hover:bg-[#222023]/40 rounded-2xl shadow-lg border border-[#FBCF4F]/40 hover:border-[#FBCF4F]/90 transition-all">
+        <div class="absolute -top-5 left-6 bg-[#FBCF4F] p-3 rounded-xl shadow-md">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <h2 class="text-3xl font-bold text-[#FBCF4F] mb-6 font-dosis">Tecnologías Utilizadas</h2>
+        <div class="flex flex-wrap gap-3">
+          {technologies.map((tech) => (
+            <span class="px-4 py-2 bg-[#FBCF4F]/25 text-[#FAEADD] rounded-full font-nunito font-semibold hover:bg-[#FBCF4F]/10 transition-colors">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <section class="relative p-8 bg-[#F29CB7] hover:bg-[#F29CB7]/40 rounded-2xl shadow-lg border border-[#522A6F]/40 hover:border-[#522A6F]/90 transition-all">
+        <div class="absolute -top-5 left-6 bg-[#522A6F] p-3 rounded-xl shadow-md">
+          <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <h2 class="text-3xl font-bold text-[#522A6F] mb-6 font-dosis">Repositorios</h2>
+        <div class="space-y-4">
+          {github.map((link) => (
+            <a 
+              href={link.url} 
+              target="_blank" 
+              class="flex items-center gap-3 text-[#222023] hover:text-[#522A6F] transition-colors group font-nunito font-semibold"
+              rel="noopener noreferrer"
+            >
+              <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+              </svg>
+              <span class="border-b border-transparent group-hover:border-[#522A6F] transition-all">
+                {link.label}
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+    </div>
+  </div>  
