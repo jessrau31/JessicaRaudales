@@ -1,6 +1,5 @@
-@import "tailwindcss";
-
-
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 astro-dev-toolbar {
     display: none !important;
   }
