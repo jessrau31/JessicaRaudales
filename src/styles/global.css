@@ -1,10 +1,9 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+
 astro-dev-toolbar {
     display: none !important;
   }
-
-  @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
 
   .font-dosis {
     font-family: 'Dosis';
@@ -20,28 +19,4 @@ html {
 
 body{
     background-color: #FAEADD;
-}
-
-@keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
-}
-
-.prose a {
-  color: #F29CB7;
-  text-decoration: underline;
-  transition: color 0.3s ease;
-}
-
-.prose a:hover {
-  color: #FBCF4F;
 }

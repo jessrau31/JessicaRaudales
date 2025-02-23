@@ -47,8 +47,8 @@ const { Content } = await projectEntry.render();
           </svg>
         </div>
         <h2 class="text-3xl font-bold text-[#F29CB7] mb-6 font-dosis">Contribuciones Clave</h2>
-        <div class="prose prose-lg text-[#222023] font-nunito">
-          {contributions}
+        <div class="prose prose-lg text-[#522A6F] font-nunito [&_strong]:text-[#522A6F] [&_strong]:font-bold">
+          <Content />
         </div>
       </section>
 
@@ -80,7 +80,7 @@ const { Content } = await projectEntry.render();
             <a 
               href={link.url} 
               target="_blank" 
-              class="flex items-center gap-3 text-[#222023] hover:text-[#522A6F] transition-colors group font-nunito font-semibold"
+              class="flex items-center gap-3 text-[#FAEADD] hover:text-[#522A6F] transition-colors group font-nunito font-semibold"
               rel="noopener noreferrer"
             >
               <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
