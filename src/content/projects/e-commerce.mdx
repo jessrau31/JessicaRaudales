@@ -1,0 +1,34 @@
+---
+title: "Infraestructura para plataforma de e-commerce en Azure ☁️"
+category: "Infraestructura como código - Cloud Architecture"
+description: "Implementación de una plataforma escalable para comercio electrónico en Azure, integrando contenido estático, aplicaciones web, procesamiento asíncrono, base de datos relacional y sistema de caché."
+images:  
+  - src: "/Diagrama1.jpg"
+    alt: "Diagrama1"
+  - src: "/Diagrama2.jpg"
+    alt: "Diagrama2"
+contributions: |
+  Como responsable del **Repositorio A**, lideré la configuración de la infraestructura crítica:
+  ✔️ **Azure Storage Account**: Almacenamiento seguro de archivos estáticos/dinámicos  
+  ✔️ **Blob Container**: Organización jerárquica con políticas de acceso  
+  ✔️ **Azure Queue**: Coordinación de tareas asíncronas (procesamiento de pedidos)  
+  ✔️ **Integración con Terraform**: Automatización con tags y versionamiento en GitHub
+technologies: ["Terraform", "Azure"]
+github:
+  - label: "Repositorio A (Almacenamiento/Mensajería)"
+    url: "https://github.com/jessrau31/Repositorio-A-Proyecto-Terraform.git"
+  - label: "Repositorio B (Infraestructura Base)"
+    url: "https://github.com/jessrau31/Repositorio-B-Proyecto-Terraform.git" 
+  - label: "Repositorio C (Capa de Datos)"
+    url: "https://github.com/jessrau31/Repositorio-C-Proyecto-Terraform.git"
+---
+Como responsable del **Repositorio A**, lideré la configuración de la infraestructura crítica:
+  ✔️ **Azure Storage Account**: Almacenamiento seguro de archivos estáticos/dinámicos  
+  ✔️ **Blob Container**: Organización jerárquica con políticas de acceso  
+  ✔️ **Azure Queue**: Coordinación de tareas asíncronas (procesamiento de pedidos)  
+  ✔️ **Integración con Terraform**: Automatización con tags y versionamiento en GitHub
+
+**Detalles Técnicos**   
+🟣 **Arquitectura Multi-repositorio**: Separación clara de responsabilidades (Storage/Apps/DB)  
+🟣 **Redis Cache**: Reducción de latencia en consultas frecuentes (+40% rendimiento)  
+🟣 **Mensajería Asíncrona**: Descarga de tareas intensivas usando colas Azure  

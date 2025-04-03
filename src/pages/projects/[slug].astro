@@ -17,7 +17,15 @@ if (!projectEntry) {
   throw new Error('Proyecto no encontrado');
 }
 
-const { title, category, description, contributions, technologies, github } = projectEntry.data;
+const { 
+  title,
+  category,
+  description,
+  images = [],
+  contributions,
+  technologies = [],
+  github = []
+} = projectEntry.data;
 
 const { Content } = await projectEntry.render();
 ---
@@ -40,6 +48,26 @@ const { Content } = await projectEntry.render();
 
     <div class="space-y-12">
       
+      {images.length > 0 && (
+        <section class="mb-12 p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-[#522A6F]/20">
+          <h2 class="text-3xl font-bold text-[#522A6F] mb-6 font-dosis">Diagramas Clave</h2>
+          <div class="grid gap-6 md:grid-cols-2">
+            {images.map((img) => (
+              <figure class="group relative">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  class="rounded-xl border-2 border-[#F29CB7]/30 hover:border-[#F29CB7]/60 transition-all"
+                />
+                <figcaption class="text-sm text-center mt-2 text-[#522A6F]/80">
+                  {img.alt}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section class="group relative p-8 bg-[#DDAAFF] hover:bg-[#DDAAFF]/40 backdrop-blur-sm rounded-2xl shadow-lg border border-[#F29CB7]/40 hover:border-[#F29CB7]/90 transition-all">
         <div class="bg-[#F29CB7] absolute -top-5 left-6 p-3 rounded-xl shadow-md">
           <svg class="w-6 h-6 text-[#522A6F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
