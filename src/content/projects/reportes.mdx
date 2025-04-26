@@ -1,0 +1,43 @@
+---
+title: "Generador de Reportes V2 enriquecido con PokeAPI 🚀"
+category: "Desarrollo Full-Stack - Arquitectura en la Nube"
+description: "Extensión de una aplicación para generar reportes CSV basados en datos de Pokémon, añadiendo eliminación de registros, detalles enriquecidos y muestreo aleatorio, utilizando servicios escalables de Azure."
+contributions: |
+  Partcipipé en las siguientes implementaciones:  
+  ✔️ **Eliminación Completa de Reportes**: Integración de botones en la UI, lógica de confirmación y sincronización con Azure Blob Storage y SQL.  
+  ✔️ **Enriquecimiento de Datos**: Ampliación del CSV con estadísticas y habilidades de Pokémon mediante llamadas adicionales a PokeAPI.  
+  ✔️ **Muestreo Aleatorio**: Implementación de parámetros para limitar registros en el reporte.  
+  ✔️ **Despliegue en Azure**: Configuración de App Service, Azure Functions, SQL Database y Blob Storage.  
+technologies: ["Next.js", "FastAPI", "Azure Functions", "Azure SQL", "Azure Blob Storage", "Terraform", "Python"]
+github:
+  - label: "UI (Next.js)"
+    url: "https://github.com/jessrau31/poke.ui.queue"
+  - label: "API (FastAPI)"
+    url: "https://github.com/jessrau31/poke.api.queue"
+  - label: "Azure FunctionApp (Python)"
+    url: "https://github.com/jessrau31/poke.functionapp.queue"
+  - label: "Base de Datos (SQL Scripts)"
+    url: "https://github.com/jessrau31/poke.queue.sql"
+  - label: "Infraestructura (Terraform)"
+    url: "https://github.com/jessrau31/poke.queue.terraform"
+---
+  
+Partcipipé en las siguientes implementaciones:  
+✔️ **Eliminación Completa de Reportes**  
+   Eliminación simultánea de registros en SQL Database y archivos en Blob Storage.  
+   Diálogos de confirmación en la UI para evitar errores.  
+✔️ **Reportes Enriquecidos**  
+   Integración con PokeAPI para obtener estadísticas base (HP, Ataque) y habilidades.  
+   Transformación de datos en formato CSV usando pandas.  
+✔️ **Muestreo Aleatorio**  
+   Selección dinámica de registros mediante `random.sample()` en el worker.  
+   Validación de parámetros en frontend y backend.  
+
+**Desafíos y Soluciones:**       
+🟣 **Sincronización entre Servicios**: Aseguramos coherencia al eliminar reportes (Blob + SQL) con transacciones y manejo de excepciones.  
+🟣 **Llamadas a API Externa**: Optimización de requests a PokeAPI usando conexiones persistentes y manejo de errores con reintentos.  
+🟣 **Muestreo Eficiente**: Implementación de lógica para evitar duplicados y garantizar aleatoriedad sin afectar el rendimiento.  
+
+**Enlaces de Acceso**  
+🟣 **UI**: https://ui-pokequeue-devexp-0700.azurewebsites.net     
+🟣 **API**: http://api-pokequeue-devexp0700.azurewebsites.net 
